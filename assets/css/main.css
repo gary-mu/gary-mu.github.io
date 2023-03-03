@@ -23,7 +23,8 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -585,7 +586,7 @@ input, select, textarea {
 				transform: translate3d(0,0,0);
 				display: inline-block;
 				height: 5.35em;
-				line-height: 5.885em;
+				line-height: 1.8em;
 				opacity: 0;
 				position: relative;
 				top: 0;
