@@ -155,7 +155,7 @@ input, select, textarea {
 		}
 
 		.icon > .label {
-			display: none;
+			display: flex;
 		}
 
 		.icon.solid:before {
@@ -163,7 +163,35 @@ input, select, textarea {
 		}
 
 		.icon.brands:before {
-			font-family: 'Font Awesome 5 Brands';
+			font-family: 'Font Awesome 6 Brands';
+		}
+/* Typewriter */
+
+		.typewriter h1 {
+			overflow: hidden; /* Ensures the content is not revealed until the animation */
+			border-right: .15em solid white; /* The typwriter cursor */
+			white-space: nowrap; /* Keeps the content on a single line */
+			margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+			letter-spacing: .15em; /* Adjust as needed */
+			animation: 
+			  typing 2.5s steps(40, end),
+			  blink-caret 1.2s step-end infinite;
+		  }
+		  
+		  /* The typing effect */
+		  @keyframes typing {
+			from { width: 0 }
+			to { width: 100% }
+		  }
+		  
+		  /* The typewriter cursor effect */
+		  @keyframes blink-caret {
+			from, to { border-color: transparent }
+			10% { border-color: white; }
+		  }
+		
+		.typewriter {
+			display: inline-flex;
 		}
 
 /* Wrapper */
@@ -546,7 +574,7 @@ input, select, textarea {
 		-moz-animation: header 1s 2.25s forwards;
 		-webkit-animation: header 1s 2.25s forwards;
 		-ms-animation: header 1s 2.25s forwards;
-		animation: header 1s 2.25s forwards;
+		animation: header 0s 0.0s forwards;
 		-moz-backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
 		-ms-backface-visibility: hidden;
@@ -602,6 +630,42 @@ input, select, textarea {
 				position: relative;
 				top: 0;
 				width: 5.35em;
+			}
+
+
+			#header nav .icon-list {
+				vertical-align: middle;
+				font-size: 30px;
+				line-height: 30px;
+				text-shadow:1px 3px rgba(0, 0, 0, 0.5);
+			  }
+
+			  #header nav .btn {
+				-moz-animation: nav-icons 0.5s ease-in-out forwards;
+				-webkit-animation: nav-icons 0.5s ease-in-out forwards;
+				-ms-animation: nav-icons 0.5s ease-in-out forwards;
+				animation: nav-icons 1s ease-in-out forwards;
+				-moz-backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
+				-ms-backface-visibility: hidden;
+				backface-visibility: hidden;
+				-moz-transform: translate3d(0,0,0);
+				-webkit-transform: translate3d(0,0,0);
+				-ms-transform: translate3d(0,0,0);
+				transform: translate3d(0,0,0);
+				background-color: transparent;
+				border: 2px solid #feffff;
+				border-radius: 12px;
+				box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.6);
+				cursor: pointer;
+				color: #fcfeff;
+				display: inline-block;
+				font-size: 1em;
+				height: 100%;
+				margin: 10px;
+				padding: 20px 10px;
+				text-align: center;
+				width: fit-content;
 			}
 
 				#header nav li:nth-child(1) {
@@ -718,7 +782,7 @@ input, select, textarea {
 					}
 
 				#header nav a span {
-					display: none;
+					display: inline-flex;
 				}
 
 /* Footer */
