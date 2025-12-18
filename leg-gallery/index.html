@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legs & Preferences | AI Curation</title>
-    
+
     <!-- SEO & Meta -->
     <meta name="description" content="A premium automated feed of AI-generated leg aesthetics and footwear.">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <header class="app-header">
@@ -28,6 +32,38 @@
         </nav>
     </header>
 
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label>Color</label>
+            <select id="filter-color">
+                <option value="all">All</option>
+                <option value="fair">Fair</option>
+                <option value="tan">Tan</option>
+                <option value="dark">Dark</option>
+                <option value="fantasy">Fantasy</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Size</label>
+            <select id="filter-size">
+                <option value="all">All</option>
+                <option value="slim">Slim</option>
+                <option value="athletic">Athletic</option>
+                <option value="curvy">Curvy</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Legwear</label>
+            <select id="filter-legwear">
+                <option value="all">All</option>
+                <option value="none">None</option>
+                <option value="socks">Socks</option>
+                <option value="stockings">Stockings/Tights</option>
+            </select>
+        </div>
+    </div>
+
     <main id="app">
         <div id="feed-container" class="feed-grid">
             <!-- Feed items injected here -->
@@ -39,4 +75,5 @@
 
     <script src="js/app.js"></script>
 </body>
+
 </html>

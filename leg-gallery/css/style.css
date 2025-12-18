@@ -3,7 +3,8 @@
     --card-bg: #121212;
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
-    --accent-color: #ff2a6d; /* Vibrant pink/red */
+    --accent-color: #ff2a6d;
+    /* Vibrant pink/red */
     --accent-glow: rgba(255, 42, 109, 0.4);
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Outfit', sans-serif;
@@ -32,7 +33,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    background: 
+    background:
         radial-gradient(circle at 15% 50%, rgba(29, 29, 31, 1) 0%, transparent 50%),
         radial-gradient(circle at 85% 30%, rgba(20, 10, 30, 1) 0%, transparent 50%);
     pointer-events: none;
@@ -78,13 +79,64 @@ body {
     transition: color 0.3s ease;
 }
 
-.nav-btn:hover, .nav-btn.active {
+.nav-btn:hover,
+.nav-btn.active {
     color: var(--text-primary);
+}
+
+/* Filter Bar */
+.filter-bar {
+    position: fixed;
+    top: 80px;
+    /* Below header */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    background: rgba(5, 5, 5, 0.85);
+    /* Slightly darker */
+    backdrop-filter: blur(12px);
+    z-index: 90;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.filter-group select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.filter-group select:hover,
+.filter-group select:focus {
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Feed Grid */
 main#app {
-    padding-top: 100px;
+    padding-top: 160px;
+    /* Adjusted for filters */
     padding-bottom: 4rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -112,14 +164,15 @@ main#app {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card-image-wrap {
     position: relative;
     width: 100%;
-    padding-bottom: 125%; /* 4:5 Aspect Ratio */
+    padding-bottom: 125%;
+    /* 4:5 Aspect Ratio */
     background: #1a1a1a;
     overflow: hidden;
 }
@@ -144,7 +197,7 @@ main#app {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
     padding: 2rem 1.5rem 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -221,7 +274,8 @@ main#app {
     text-align: center;
     text-decoration: none;
     font-weight: 600;
-    margin-top: -4px; /* Fix gap */
+    margin-top: -4px;
+    /* Fix gap */
     transition: background 0.3s;
 }
 
@@ -239,7 +293,17 @@ main#app {
 
 /* Responsive */
 @media (max-width: 600px) {
+    .filter-bar {
+        flex-wrap: wrap;
+        top: 70px;
+    }
+
     .feed-grid {
         grid-template-columns: 1fr;
+    }
+
+    main#app {
+        padding-top: 180px;
+        /* More space for wrapped filters */
     }
 }
