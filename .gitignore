@@ -1,7 +1,7 @@
 .DS_Store
-# review-2026: only the encrypted index.html is published; source and plain build stay local
-review-2026/src/
-review-2026/dist/
-review-2026/.staticrypt.json
-review-2026/.passphrase
+# review sites: only the encrypted index.html is published; sources, plain builds, salts and passphrases stay local
+review-2026*/src/
+review-2026*/dist/
+review-2026*/.staticrypt.json
+review-2026*/.passphrase
 .claude/
