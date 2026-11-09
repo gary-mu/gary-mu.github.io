@@ -20,6 +20,17 @@ TITLE, BUTTON = "2026 Unwrapped", "Unwrap"
 INSTRUCTIONS = "Enter the passphrase Gary shared with you. Or enter your last name (lower case) if you're the intended audience."
 
 
+
+IMG_DIR = HERE / "src" / "img"
+def inline_images(html: str) -> str:
+    """Replace src="img/<file>" with a base64 data URI so the single-file page stays self-contained."""
+    import base64, re
+    def repl(m):
+        p = IMG_DIR / m.group(1)
+        return 'src="data:image/png;base64,' + base64.b64encode(p.read_bytes()).decode() + '"'
+    return re.sub(r'src="img/([^"]+)"', repl, html)
+
+
 def inline() -> Path:
     html = (SRC / "index.html").read_text()
     css = (SRC / "style.css").read_text()
@@ -28,6 +39,7 @@ def inline() -> Path:
         js = (SRC / name).read_text().replace("</script", "<\\/script")
         html = html.replace(f'<script src="{name}"></script>', f"<script>\n{js}\n</script>")
     assert 'src="' not in re.sub(r"<svg.*?</svg>", "", html, flags=re.S) or True
+    html = inline_images(html)
     DIST.mkdir(exist_ok=True)
     out = DIST / "index.html"
     out.write_text(html)
