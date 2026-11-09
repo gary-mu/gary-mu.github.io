@@ -21,6 +21,17 @@ TITLE, BUTTON = "2026 Unwrapped · Story", "Play"
 INSTRUCTIONS = "Enter the passphrase Gary shared with you. Or enter your last name (lower case) if you're the intended audience."
 
 
+
+IMG_DIR = HERE.parent / "review-2026" / "src" / "img"
+def inline_images(html: str) -> str:
+    """Replace src="img/<file>" with a base64 data URI so the single-file page stays self-contained."""
+    import base64, re
+    def repl(m):
+        p = IMG_DIR / m.group(1)
+        return 'src="data:image/png;base64,' + base64.b64encode(p.read_bytes()).decode() + '"'
+    return re.sub(r'src="img/([^"]+)"', repl, html)
+
+
 def inline() -> Path:
     html = (SRC / "index.html").read_text()
     css = (SRC / "style.css").read_text()
@@ -29,6 +40,7 @@ def inline() -> Path:
     app = (SRC / "app.js").read_text().replace("</script", "<\\/script")
     html = html.replace('<script src="data.js"></script>', f"<script>\n{data}\n</script>")
     html = html.replace('<script src="app.js"></script>', f"<script>\n{app}\n</script>")
+    html = inline_images(html)
     DIST.mkdir(exist_ok=True)
     out = DIST / "index.html"
     out.write_text(html)
