@@ -12,12 +12,12 @@ IMG = "../../assets/images"
 
 APPS = [
     ("https://evaluator-studio-demo.garymu.com/", "Evaluator Builder Studio", "Using GEPA to programmatically optimize prompt.", "garymu.com"),
-    ("https://rto-calculate.streamlit.app/", "RTO calculator", "Optimize your PTO with AI.", "Streamlit"),
     ("https://whatsmygoal.vercel.app/", "What’s My Goal", "Helping students navigate goals and development area.", "Vercel"),
+    ("https://rto-calculate.streamlit.app/", "RTO calculator", "Optimize your PTO with AI.", "Streamlit"),
     ("https://tldr-lsn.streamlit.app/", "TLDR Lesson", "Turn class recording into 3-5 bullets, use Whisper API.", "Streamlit"),
     ("https://lsn-copilot.streamlit.app/", "Lesson Plan Copilot", "Use LLM to generate ideas for lesson plans.", "Streamlit"),
 ]
-ARCHIVED = {"RTO calculator", "TLDR Lesson", "Lesson Plan Copilot"}
+ARCHIVED = {"TLDR Lesson", "Lesson Plan Copilot"}
 APPS_MAIN = [a for a in APPS if a[1] not in ARCHIVED]
 APPS_ARCHIVE = [a for a in APPS if a[1] in ARCHIVED]
 LINKEDIN = "https://www.linkedin.com/in/garymu/"
