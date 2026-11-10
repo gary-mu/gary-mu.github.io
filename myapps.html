@@ -1,98 +1,139 @@
-<!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Some things I made</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <script src="https://kit.fontawesome.com/9bd63b664b.js" crossorigin="anonymous"></script>
-        <!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-TNMXBFM');</script>
-		<!-- End Google Tag Manager -->
-	</head>
-	<body class="is-preload">
-		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNMXBFM"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
-
-				<!-- Header -->
-					<header id="header">
-                        <nav>
-							<ul>
-								<li><a href="./index.html" class="i fa-solid fa-house"></a></li>
-							</ul>
-						</nav>
-						<h1>Apps I made</h1>
-						<p>username/pass: ladygaga/freebritney</p>
-						<nav>
-							<div>
-								<button class="btn">
-									<a href="https://rto-calculate.streamlit.app/">
-										<span class="icon-list fa-solid fa-calendar-days"></span>
-										<span class="shadowed-text list-text">RTO calculator (optimize your PTO with AI)</span>
-									</a>
-								</button>
-							</div>
-							<div>
-								<button class="btn">
-									<a href="https://whatsmygoal.vercel.app/">
-										<span class="icon-list fa-solid fa-flag-checkered"></span>
-										<span class="shadowed-text list-text">What's My Goal (using Chat GPT API)</span>
-									</a>
-								</button>
-							</div>
-							<div>
-								<button class="btn">
-									<a href="https://tldr-lsn.streamlit.app/">
-										<span class="icon-list fa-solid fa-headphones"></span>
-										<span class="shadowed-text list-text">TLDR Lesson <br> (Turn class recording into 3-5 bullets, using OpenAI API)</span>
-									</a>
-								</button>
-							</div>
-							<div>
-								<button class="btn">
-									<a href="https://lsn-copilot.streamlit.app/">
-										<span class="icon-list fa-solid fa-chalkboard-user"></span>
-										<span class="shadowed-text list-text">Lesson Plan Copilot <br> (Use ChatGPT4 to generate ideas for lesson plans)</span>
-									</a>
-								</button>
-							</div>
-							<div>
-								<button class="btn">
-									<a href="https://garymu.shinyapps.io/glassdoor-review-trend/">
-										<span class="icon-list fa-solid fa-check-to-slot"></span>
-										<span class="shadowed-text list-text">Company Review Analysis <br> (Use Glassdoor review data to analyze company trends)</span>
-									</a>
-								</button>
-							</div>
-						</nav>
-					</header>
-				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">&copy;Copyright Gary Mu 2023</span>
-					</footer>
-
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Some things I made</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Small apps Gary Mu made: an evaluator builder studio, a goal setter and an archive of older tools." />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/site.css" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TNMXBFM');</script>
+<!-- End Google Tag Manager -->
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNMXBFM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a class="skip" href="#main">Skip to content</a>
+<figure class="scene scene--fixed" data-slot="scene" data-alt="One wide nature photograph of Gary's own"><img src="assets/images/yosemite.jpg" width="1920" height="2032" alt="Yosemite Valley from above the pines, El Capitan on the left and a waterfall on the right" fetchpriority="high" style="object-position: 50% 46%"></figure>
+<div class="scene__scrim scene--fixed"></div>
+<div class="page">
+<header class="nav"><div class="container"><div class="nav__in">
+<a class="nav__mark" href="./index.html">Gary Mu</a>
+<ul class="nav__links"><li><a href="./index.html">Home</a></li><li><a href="https://gary-mu.github.io/docs/garymu_resume.pdf">Resume</a></li></ul>
+</div></div></header>
+<main id="main">
+<section class="apps apps--page">
+<div class="container">
+<div class="panel">
+<div class="apps__head"><h1>Apps I made</h1></div>
+<ul class="applist">
+<li><a class="app" href="https://evaluator-studio-demo.garymu.com/"><span class="app__name">Evaluator Builder Studio</span><span class="app__what">Using GEPA to programmatically optimize prompt.</span><span class="app__host label">garymu.com</span></a></li>
+<li><a class="app" href="https://whatsmygoal.vercel.app/"><span class="app__name">What’s My Goal</span><span class="app__what">Helping students navigate goals and development area.</span><span class="app__host label">Vercel</span></a></li>
+</ul>
+<details class="archive">
+<summary><span class="archive__title">Archive</span><span class="label">3 older apps</span></summary>
+<ul class="applist">
+<li><a class="app" href="https://rto-calculate.streamlit.app/"><span class="app__name">RTO calculator</span><span class="app__what">Optimize your PTO with AI.</span><span class="app__host label">Streamlit</span></a></li>
+<li><a class="app" href="https://tldr-lsn.streamlit.app/"><span class="app__name">TLDR Lesson</span><span class="app__what">Turn class recording into 3-5 bullets, use Whisper API.</span><span class="app__host label">Streamlit</span></a></li>
+<li><a class="app" href="https://lsn-copilot.streamlit.app/"><span class="app__name">Lesson Plan Copilot</span><span class="app__what">Use LLM to generate ideas for lesson plans.</span><span class="app__host label">Streamlit</span></a></li>
+</ul>
+</details>
+</div>
+</div>
+</section>
+</main>
+<footer class="foot"><div class="container">
+<p class="foot__mark">Gary Mu</p>
+<div class="foot__row"><ul class="foot__links">
+<li><a href="https://www.linkedin.com/in/garymu/">LinkedIn</a></li>
+<li><a href="https://gary-mu.github.io/docs/garymu_resume.pdf">Resume</a></li>
+<li><a href="./myapps.html">My apps</a></li>
+<li><a href="https://www.instagram.com/comewithme_travels/">Instagram</a></li>
+<li><a href="https://www.strava.com/athletes/3235265">Strava</a></li>
+</ul><small>&copy; Copyright Gary Mu 2026</small></div>
+</div></footer>
+</div>
+<script>
+window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
+document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });
+(() => {
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Run fn once the visitor is actually looking at this tab. No observers: nothing here may depend on one to become visible.
+  const whenSeen = (el, fn) => {
+    let done = false;
+    const go = () => { if (done || document.visibilityState !== 'visible') return; done = true; fn(); };
+    go(); document.addEventListener('visibilitychange', go); window.addEventListener('focus', go); window.addEventListener('pageshow', go);
+  };
+  // Split a heading into letters (words stay unbreakable); screen readers get the plain text.
+  const split = (el, cls) => {
+    const text = el.textContent.trim(), chars = [];
+    el.setAttribute('aria-label', text); el.textContent = '';
+    text.split(' ').forEach((word, i, all) => {
+      const w = document.createElement('span'); w.className = 'ch-word'; w.setAttribute('aria-hidden', 'true');
+      [...word].forEach((c) => { const s = document.createElement('span'); s.className = cls; s.textContent = c; s.style.setProperty('--i', chars.length); w.append(s); chars.push(s); });
+      el.append(w); if (i < all.length - 1) el.append(' ');
+    });
+    return chars;
+  };
+  // Greeting, option 1: it types itself once.
+  document.querySelectorAll('[data-type]').forEach((el) => {
+    if (calm) return;
+    const chars = split(el, 'type__ch'); let n = 0, busy = false;
+    const step = () => {
+      if (n > 0) chars[n - 1].classList.remove('is-caret');
+      chars[n].classList.add('is-on', 'is-caret');
+      if (++n < chars.length) return setTimeout(step, 120);
+      const last = chars[chars.length - 1]; last.classList.add('is-done'); busy = false;
+      setTimeout(() => { if (!busy) last.classList.remove('is-caret', 'is-done'); }, 4600);
+    };
+    const run = () => { if (busy) return; busy = true; n = 0; chars.forEach((c) => c.classList.remove('is-on', 'is-caret', 'is-done')); setTimeout(step, 500); };
+    whenSeen(el, run);
+    el.addEventListener('click', run); // click the greeting to watch it type again
+  });
+  // Greeting, option 2: the letters rise in, one after another.
+  document.querySelectorAll('[data-rise]').forEach((el) => {
+    if (calm) return;
+    split(el, 'rise__ch');
+    whenSeen(el, () => setTimeout(() => el.classList.add('is-in'), 300));
+  });
+  // Items that fade up one by one when they come on screen.
+  document.querySelectorAll('[data-reveal]').forEach((el) => whenSeen(el, () => el.classList.add('is-in')));
+  // The background scene drifts a few pixels against the pointer.
+  document.querySelectorAll('[data-parallax]').forEach((el) => {
+    if (calm || !matchMedia('(pointer: fine)').matches) return;
+    let raf = 0;
+    window.addEventListener('pointermove', (e) => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = 0; el.style.translate = `${(e.clientX / innerWidth - 0.5) * -18}px ${(e.clientY / innerHeight - 0.5) * -12}px`; });
+    });
+  });
+  // Keyboard shortcuts: an element with data-key="a" is opened by pressing A.
+  const keys = {}; document.querySelectorAll('[data-key]').forEach((el) => { keys[el.dataset.key] = el; });
+  if (Object.keys(keys).length) document.addEventListener('keydown', (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    const el = keys[e.key.toLowerCase()]; if (el) { e.preventDefault(); el.focus(); el.click(); }
+  });
+  // One chooser: links switch the pane on hover and focus, buttons on click.
+  document.querySelectorAll('[data-explore]').forEach((root) => {
+    const picks = [...root.querySelectorAll('[data-show]')], panes = [...root.querySelectorAll('[data-pane]')];
+    const show = (k) => {
+      picks.forEach((p) => { const on = p.dataset.show === k; p.classList.toggle('is-on', on); if (p.tagName === 'BUTTON') p.setAttribute('aria-pressed', on); });
+      panes.forEach((p) => p.classList.toggle('is-on', p.dataset.pane === k));
+    };
+    picks.forEach((p) => {
+      if (p.tagName === 'BUTTON') p.addEventListener('click', () => show(p.dataset.show));
+      else ['pointerenter', 'focus'].forEach((e) => p.addEventListener(e, () => show(p.dataset.show)));
+    });
+  });
+})();
+</script>
+</body>
 </html>
