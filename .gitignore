@@ -2,6 +2,7 @@
 # review sites: only the encrypted index.html is published; sources, plain builds, salts and passphrases stay local
 review-2026*/src/
 review-2026*/dist/
+review-2026*/out/
 review-2026*/.staticrypt.json
 review-2026*/.passphrase*
 review-2026*/.contentkey
