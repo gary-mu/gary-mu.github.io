@@ -31,9 +31,9 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   ok("scrolling back up rewinds to the opening", s.vis.join() === "open" && s.y === 0, s.vis.join());
 
   await page.click("#btn-index"); await sleep(200);
-  ok("index opens with eleven cards", await page.evaluate(() => !document.querySelector("#index").hidden && document.querySelectorAll("#index .card").length === 11));
-  await page.evaluate(() => document.querySelectorAll("#index .card")[8].click()); await sleep(500); s = await state();
-  ok("index card jumps straight to the OASIS room", s.crumb === "### 6. make it AI-native" && s.vis.join() === "mcp", `${s.crumb} | ${s.vis.join("+")}`);
+  ok("index opens with twelve cards", await page.evaluate(() => !document.querySelector("#index").hidden && document.querySelectorAll("#index .card").length === 12));
+  await page.evaluate(() => document.querySelectorAll("#index .card")[9].click()); await sleep(500); s = await state();
+  ok("index card jumps straight to the OASIS room", s.crumb === "### 7. make it AI-native" && s.vis.join() === "mcp", `${s.crumb} | ${s.vis.join("+")}`);
   ok("that room's terminal lines are shown", await page.evaluate(() => [...document.querySelectorAll(".r-mcp .term .body > div")].every((d) => getComputedStyle(d).opacity === "1")));
 
   await page.evaluate(() => window.__seek(0)); await sleep(100);
@@ -52,6 +52,17 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   await page.evaluate(() => window.__seek(window.__total)); await sleep(300); s = await state();
   ok("the end shows the notepad and a full progress bar", s.vis.join().startsWith("outro") && s.bar > 99.5, `${s.vis.join()} ${s.bar}`);
   ok("no horizontal overflow", await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+
+  const label = await page.evaluate(() => document.querySelector('.r-outro [data-do="preview"]').textContent + (document.querySelector('.r-outro [data-do="copy"]') ? " +copy" : ""));
+  await page.evaluate(() => document.querySelector('.r-outro [data-do="preview"]').click()); await sleep(200);
+  const pv = await page.evaluate(() => { const t = document.querySelector("#tldr"); return { open: !t.hidden, n: t.querySelectorAll("li").length, text: [...t.querySelectorAll("li")].map((l) => "• " + l.textContent).join("\n") }; });
+  ok("the last room has one 'preview & copy my impact tl;dr' button that opens the six bullets", label === "preview & copy my impact tl;dr" && pv.open && pv.n === 6, `${label} | ${pv.n}`);
+  const want = await page.evaluate(() => window.REVIEW.glance.map((g) => "• " + g.head + " " + g.body).join("\n"));
+  ok("the preview shows exactly the text the button copies", pv.text === want);
+  const yb = (await state()).y; await page.mouse.wheel({ deltaY: 900 }); await sleep(300);
+  ok("the film stays put while the preview is open", Math.abs((await state()).y - yb) < 2);
+  await page.keyboard.press("Escape"); await sleep(100);
+  ok("escape closes the preview", await page.evaluate(() => document.querySelector("#tldr").hidden));
 
   const p2 = await browser.newPage();
   await p2.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
