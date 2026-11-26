@@ -675,7 +675,7 @@ window.REVIEW = {
     const ticks = [60, 65, 70, 75, 80, 85, 90, 95, 100].map((v) => `<i class="${v % 10 ? "" : "big"}" style="bottom:${h(v)}%"></i>${v % 10 ? "" : `<span style="bottom:${h(v)}%">${v}</span>`}`).join("");
     return `
     <div class="copy">${md(r, 0.2, "###", "1. build the ruler first")}
-      ${say(r, 0.5, "Four evaluators. Every one *underperformed* in the first iteration.")}
+      ${say(r, 0.5, "Four evaluators. Every one *improved significantly* from baseline.")}
       ${say(r, 4.6, "I collaborated with experts and learning scientists to revise the MEJ and improve the data.", "sm")}
       ${say(r, 8.4, "Shipped 4 high-quality evaluators that *exceed* the accuracy and sniff test bar.", "sm")}
     </div>
@@ -858,7 +858,7 @@ window.REVIEW = {
     <p>Five goals went on the table in January. All five were served to satisfaction.</p>
     <ul>${D.goals.map((g) => `<li><b>${esc(g.title)}:</b> ${esc(g.status.toLowerCase())}. ${esc(g.headline)}${g.deliveredNote ? " " + esc(g.deliveredNote) : ""}</li>`).join("")}</ul>
     <h3>1. build the ruler first</h3>
-    <p>Four evaluators. Every one underperformed in the first iteration: Subject Matter Knowledge at 85%, Purpose at 77%, Conventionality mixing up dimensions, Intertextuality failing its first sniff test. I collaborated with experts and learning scientists to revise the MEJ and improve the data, and shipped 4 high-quality evaluators that exceed the accuracy and sniff test bar: 90%, 83%, 84% and 83%.</p>
+    <p>Four evaluators. Every one improved significantly from baseline: Subject Matter Knowledge from 85% to 90%, Purpose from 77% to 84%, Intertextuality from 80% to 83%, and Conventionality to 83% once the prompt separated the dimensions it had mixed up. I collaborated with experts and learning scientists to revise the MEJ and improve the data, and shipped 4 high-quality evaluators that exceed the accuracy and sniff test bar.</p>
     <h3>2. write the playbook, then others scaled it</h3>
     <p>Make it repeatable, then others adopted it and scaled. GEPA replaced hand-written prompts and is now how the whole team builds. The sprint guide, piloted and fine-tuned with Michelle Pustilnik, ran successfully even during my leave.</p>
     <h3>3. prototype as proposal</h3>
