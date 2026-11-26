@@ -3,11 +3,13 @@
 
 1. Inline style.css, data.js and app.js from src/ into one HTML file at dist/index.html
    (plain, for local preview).
-2. Wrap it in the multi-passphrase gate (encrypt.js) as ./index.html, which is what GitHub Pages serves.
+2. Copy it to ./index.html, which is what GitHub Pages serves. The page is open: no passphrase.
+   (--encrypt wraps it in the multi-passphrase gate from encrypt.js instead.)
 
 Usage:
-    python3 build.py                 # passphrases from review-2026/.passphrases
-    python3 build.py --no-encrypt    # dist only
+    python3 build.py                 # dist/index.html and the open ./index.html
+    python3 build.py --dist-only     # dist only (--no-encrypt still works)
+    python3 build.py --encrypt       # gated ./index.html; passphrases from review-2026/.passphrases (gitignored)
 """
 import os, re, subprocess, sys
 from pathlib import Path
@@ -56,7 +58,13 @@ def encrypt(plain: Path, passphrases: Path) -> None:
 
 if __name__ == "__main__":
     plain = inline()
-    if "--no-encrypt" not in sys.argv:
+    if "--dist-only" in sys.argv or "--no-encrypt" in sys.argv:
+        pass                                          # preview build only
+    elif "--encrypt" in sys.argv:                     # put the passphrase gate back
         if not PASSPHRASES.exists():
             sys.exit(f"No passphrases file at {PASSPHRASES} (one per line)")
         encrypt(plain, PASSPHRASES)
+    else:                                             # default since Nov 26 2026: published open, no passphrase
+        import shutil
+        shutil.copyfile(plain, HERE / "index.html")
+        print(f"published open -> {HERE / 'index.html'}")
