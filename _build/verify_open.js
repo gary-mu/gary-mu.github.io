@@ -46,6 +46,16 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   ok("main: goal 1 shows 'delivered 8 shipped or upgraded'", /delivered\s*8 shipped or upgraded/i.test(g1), g1.slice(0, 140));
   await p.evaluate(() => window.scrollBy(0, 260)); await wait(600);
   await p.screenshot({ path: path.join(out, "open-main-goals.png") });
+  // deep dive A lives in a <template> and opens in a sheet from an era's button
+  const dive = await p.evaluate(() => document.querySelector("#tpl-a").content.textContent.replace(/\s+/g, " "));
+  ok("main: deep dive A says every one improved significantly from baseline", /The baseline\s*Every one improved significantly from baseline\./.test(dive));
+  const allText = await p.evaluate(() => document.body.textContent + [...document.querySelectorAll("template")].map((x) => x.content.textContent).join(" "));
+  ok("main: no 'missed first' left on the page or in its sheets", !/missed first/i.test(allText));
+  const opened = await p.evaluate(() => { for (const e of document.querySelectorAll(".era")) { e.click(); const d = document.querySelector('button[data-sheet="a"]'); if (d) { d.click(); return true; } } return false; });
+  await wait(900);
+  if (opened) { await p.evaluate(() => document.querySelector('#sheet-body .step[data-step="1"]').scrollIntoView({ block: "center" })); await wait(1600); }
+  await p.screenshot({ path: path.join(out, "open-main-diveA.png") });
+  ok("main: deep dive A opens and its chart reads 'v0.1: the baseline' on that step", opened && /v0\.1: the baseline/.test(await p.evaluate(() => document.querySelector("#canvas-a .ctitle")?.textContent || "")));
   await p.close();
 
   // ---- reels ----
@@ -55,13 +65,17 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   ok("reels: cover says eight evaluators shipped or upgraded", /Eight evaluators shipped or upgraded\./.test(t));
   ok("reels: top track says delivered 8 (4 new, 4 upgraded)", /Target 2 to 3\.\s*Delivered 8\./.test(t) && /4 new, 4 upgraded/.test(t));
   ok("reels: nothing left saying 'Delivered 4' or 'Four literacy evaluators'", !/Delivered 4\.|Four literacy evaluators/.test(t));
+  ok("reels: top track says improved significantly from baseline, not 'missed first'", /Each new one improved significantly from baseline/.test(t) && !/missed first/i.test(t));
   ok("reels: last card links to REVIEW.md", (await p.$$eval('#cards a[href="../review-2026-md/"]', (a) => a.length)) === 1);
   const n = await p.$$eval("#cards .card", (c) => c.length);
   await p.keyboard.press("p");
   for (let i = 0; i < n; i++) {
     const tx = await p.evaluate(() => document.querySelector("#cards .card.active").textContent);
     if (i === 0) await p.screenshot({ path: path.join(out, "open-reels-cover.png") });
-    if (/Top track/.test(tx)) { await wait(700); await p.screenshot({ path: path.join(out, "open-reels-toptrack.png") }); }
+    if (/Top track/.test(tx)) {
+      await wait(700); await p.screenshot({ path: path.join(out, "open-reels-toptrack.png") });
+      ok("reels: top track card fits without overflow", await p.evaluate(() => { const c = document.querySelector("#cards .card.active"); return c.scrollHeight <= c.clientHeight + 2; }));
+    }
     if (i === n - 1) { await wait(700); await p.screenshot({ path: path.join(out, "open-reels-last.png") }); }
     await p.keyboard.press("ArrowRight"); await wait(120);
   }
@@ -78,6 +92,7 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   ok("trailer: no 1,770 in the text or the count targets", !/1,?770/.test(t) && !counts.includes("1770"));
   ok("trailer: says verdicts benchmarked per model", /verdicts benchmarked per model/.test(t));
   ok("trailer: has the model swap scene and OASIS in Claude", /led a model swap across teams/i.test(t) && /OASIS in Claude/.test(t) && /No significant impact on accuracy\./.test(t));
+  ok("trailer: scene 3 says every one improved significantly from baseline, not 'missed first'", /Every one improved significantly from baseline\./.test(t) && /How\? I went back to the experts\./.test(t) && !/missed first/i.test(t));
   ok("trailer: nine scenes that tile 0 to 31 s with no gap", await p.evaluate(() => { const s = [...document.querySelectorAll(".scene")].map((e) => [+e.dataset.in, +e.dataset.out]); return s.length === 9 && s[0][0] === 0 && s[8][1] === 31 && s.every((x, i) => !i || x[0] === s[i - 1][1]); }));
   ok("trailer: still exactly 30 s", (await p.evaluate(() => window.__duration)) === 30000);
   await p.close();
@@ -88,6 +103,7 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   ok("REVIEW.md: twelve rooms", (await p.$$eval("#stage .room", (r) => r.length)) === 12);
   const rd = await p.evaluate(() => document.querySelector("#read").textContent.replace(/\s+/g, " "));
   ok("REVIEW.md: 8 evaluators shipped or upgraded, 885 per model", /8 evaluators shipped or upgraded\./.test(rd) && /885 verdicts benchmarked per model/.test(rd));
+  ok("REVIEW.md: chapter 1 says every one improved significantly from baseline", /Every one improved significantly from baseline/.test(rd) && !/underperformed/i.test(rd));
   ok("REVIEW.md: Trust card says approved", /reviewed and approved the swap/.test(await p.evaluate(() => document.querySelector(".r-swap").textContent)));
   await p.close();
 

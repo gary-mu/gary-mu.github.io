@@ -112,6 +112,7 @@ h2.big small { font-family: var(--sans); font-weight: 500; font-size: calc(var(-
 /* scene 3 */
 .swap { display: grid; }
 .swap > * { grid-area: 1 / 1; }
+.swap h2 { text-wrap: balance; }   /* no single word left alone on a second line */
 .bars { display: flex; align-items: flex-end; justify-content: center; gap: calc(var(--u) * 5); height: calc(var(--u) * 21); margin-top: calc(var(--u) * 1); position: relative; }
 .bars::before { content: "80% quality bar"; position: absolute; left: calc(var(--u) * -9); right: calc(var(--u) * -9); bottom: calc(var(--u) * 3.6 + (var(--u) * 17.4) * .5); border-top: 2px dashed rgba(255,209,102,.6); font-family: var(--mono); font-size: calc(var(--u) * .9); color: var(--gold); text-align: left; padding-top: calc(var(--u) * .3); animation: rise .6s var(--ease) both; animation-delay: 14.6s; }
 .ev { display: grid; grid-template-columns: auto auto; column-gap: calc(var(--u) * .7); align-items: end; position: relative; padding-bottom: calc(var(--u) * 3.6); height: 100%; }
@@ -197,12 +198,12 @@ h2.big small { font-family: var(--sans); font-weight: 500; font-size: calc(var(-
         <p class="caption a" style="--t:10.4"><b class="c-sky">Jun to Sep: parental leave.</b> Two launches still shipped, on my runbook.</p>
       </section>
 
-      <!-- 3 · the miss and the fix -->
+      <!-- 3 · from baseline to shipped -->
       <section class="scene" data-in="12" data-out="15.9">
         <div class="kicker a" style="--t:12.15">How the evaluators got there</div>
         <div class="swap">
-          <h2 class="a out" style="--t:12.3; --o:13.7">Every one of them missed first.</h2>
-          <h2 class="a" style="--t:13.9">Then I went back to the experts.</h2>
+          <h2 class="a out" style="--t:12.3; --o:13.7">Every one improved <br>significantly from baseline.</h2>
+          <h2 class="a" style="--t:13.9">How? I went back to the experts.</h2>
         </div>
         <div class="bars" id="bars"></div>
         <p class="caption a" style="--t:14.9">All four cleared the bar, about two weeks each.</p>
@@ -515,7 +516,7 @@ window.REVIEW = {
     const line = S("path", { d: path, class: "line", pathLength: 1 }); svg.appendChild(line);
   })();
 
-  /* ---------- scene 3: every evaluator missed, then cleared the bar ---------- */
+  /* ---------- scene 3: every evaluator improved from its baseline and cleared the bar ---------- */
   (function bars() {
     const box = $("#bars"), names = { SMK: "Subject Matter", CONV: "Conventionality", PURP: "Purpose", INTX: "Intertextuality" };
     const h = (v) => ((v - 60) / 40) * 100;   // 60% at the floor, 100% at the top
