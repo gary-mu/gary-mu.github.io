@@ -1,5 +1,5 @@
 .DS_Store
-# review sites: only the encrypted index.html is published; sources, plain builds, salts and passphrases stay local
+# review sites: the built index.html is published open (no passphrase since Nov 26 2026); sources, preview builds, salts and passphrases stay local
 review-2026*/src/
 review-2026*/dist/
 review-2026*/out/
