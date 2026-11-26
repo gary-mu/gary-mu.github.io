@@ -510,7 +510,7 @@ footer a { color: var(--ink-2); }
       <div class="scrolly" id="dive-a">
         <div class="steps">
           <div class="step" data-step="0"><span class="comp">The method</span><h3>Build the ruler first.</h3><p>Each sprint opened with literacy experts from ANET annotating texts. I distilled a starter prompt from their transcripts and the Model of Expert Judgement, then let DSPy/GEPA rewrite it against the annotations. Only rewrites that scored better survived.</p></div>
-          <div class="step" data-step="1"><span class="comp">The miss</span><h3>Every one of them missed first.</h3><p>Subject Matter Knowledge landed at 85%. Purpose plateaued at 77%. Conventionality was quietly mixing in vocabulary and background knowledge. Intertextuality failed its first live sniff test on May 19, conflating intertextuality with background knowledge.</p></div>
+          <div class="step" data-step="1"><span class="comp">The baseline</span><h3>Every one improved significantly from baseline.</h3><p>The first iterations set the starting point: Subject Matter Knowledge at 85%, Purpose at 77%, Intertextuality at 80%. Expert review showed Conventionality mixing in vocabulary and background knowledge, and Intertextuality did not pass its first live sniff test on May 19, where it conflated intertextuality with background knowledge.</p></div>
           <div class="step" data-step="2"><span class="comp">The fix</span><h3>Go back to the experts, not the prompt.</h3><p>I reviewed every disagreement with the experts and re-distilled the Model of Expert Judgement before a second GEPA round. For Conventionality, that meant explicit language separating the dimensions. For Intertextuality, the team did it from my runbook and passed Sniff Test 2 on May 28.</p></div>
           <div class="step" data-step="3"><span class="comp">The outcome</span><h3>Four new evaluators shipped; the target was two to three.</h3><p>SMK 90%, Conventionality 83% with 90% expert agreement, Purpose 84%, Intertextuality 83%. Each cleared Trust review, a model card and the public repo. Conventionality was one of the three most-used SDK evaluators by June. <a class="doclink" href="#" target="_blank" rel="noopener">Details in the doc ↗</a></p></div>
         </div>
@@ -1025,10 +1025,10 @@ window.REVIEW = {
       const d = S("text", { x: cx, y: H - padB + 52, "text-anchor": "middle", fill: "#7f789b", "font-size": "10" }); d.textContent = e.released; d.classList.add("mono"); svg.appendChild(d);
     });
     A.appendChild(svg);
-    Atitle.textContent = ["Accuracy vs expert annotations", "v0.1: where each one missed", "v0.2: after the fix", "Shipped: all four above the bar"][Math.min(step, 3)];
+    Atitle.textContent = ["Accuracy vs expert annotations", "v0.1: the baseline", "v0.2: after the fix", "Shipped: all four above the bar"][Math.min(step, 3)];
     Afoot.textContent = [
       "Four evaluators, one method: expert kickoff, distilled prompt, GEPA, sniff test, ship.",
-      "SMK 85%. Purpose 77%. Conventionality mixed dimensions. Intertextuality failed Sniff Test 1.",
+      "First iteration: SMK 85%, Purpose 77%, Intertextuality 80%. Conventionality mixed up dimensions.",
       "SMK 90%, Conventionality 83%, Purpose 84%, Intertextuality 83%.",
       "Each released about two weeks after kickoff. The fourth shipped on the runbook."
     ][Math.min(step, 3)];

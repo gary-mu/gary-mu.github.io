@@ -462,7 +462,7 @@ window.REVIEW = {
     { dur: 8000, cls: "t-mint", html: `
       <div class="kicker in">Top track</div>
       <h2 class="in">Target 2 to 3.<br>Delivered 8.</h2>
-      <p class="in">4 new, 4 upgraded. Each new one missed first, then cleared the bar after going back to the experts.</p>
+      <p class="in">4 new, 4 upgraded. Each new one improved significantly from baseline and cleared the bar, after going back to the experts.</p>
       <div class="bars in">${D.evaluators.map((e) => `<div class="row"><span>${esc(e.short)}</span><div class="trk">${e.v1 != null ? `<div class="v1" style="--w:${(e.v1 - 60) / 40 * 100}%"></div>` : ""}<div class="v2" style="--w:${(e.v2 - 60) / 40 * 100}%"></div></div><span class="c-mint">${e.v2}%</span></div>`).join("")}</div>
       <p class="small in">bars start at 60%; grey is v0.1, mint is shipped</p>` },
     { dur: 8000, cls: "t-sky", html: `
