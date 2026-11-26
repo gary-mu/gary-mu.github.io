@@ -87,6 +87,10 @@ svg.prop { display: block; overflow: visible; }
 .title b { font-weight: 900; font-stretch: 100%; letter-spacing: -.055em; font-size: calc(var(--u) * 17); }
 .title i { font-size: calc(var(--u) * 13); margin-left: calc(var(--u) * 1); }
 @media (max-aspect-ratio: 4/5) { .title { top: 20%; } .title b { font-size: 23vw; display: block; } .title i { font-size: 17vw; } }
+/* "the 2026 version": sits on top of the title and moves with it at every screen shape */
+.title .kick { position: absolute; left: 0; right: 0; bottom: 100%; margin-bottom: calc(var(--u) * .9); line-height: 1; font-weight: 900; font-size: calc(var(--u) * 3.4); letter-spacing: .03em; text-transform: uppercase; color: var(--ink); }
+.title .kick em { font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: none; font-size: calc(var(--u) * 6.6); color: var(--em); letter-spacing: -.02em; margin: 0 .16em; vertical-align: -.07em; }
+@media (max-aspect-ratio: 4/5) { .title .kick { font-size: 6.2vw; margin-bottom: 2.5vw; } .title .kick em { font-size: 12vw; } }
 .quote { position: absolute; z-index: 4; left: calc(var(--u) * 5); bottom: calc(var(--u) * 4.5); font-family: var(--mono); font-size: calc(var(--u) * 1.2 * var(--k)); line-height: 1.7; color: var(--ink0); }
 .quote b { color: var(--brick); margin-right: .8em; }
 .meta { position: absolute; z-index: 4; bottom: calc(var(--u) * 1.6); font-family: var(--mono); font-size: calc(var(--u) * .95 * var(--k)); letter-spacing: .14em; text-transform: uppercase; color: var(--ink0); opacity: .7; }
@@ -637,7 +641,7 @@ window.REVIEW = {
   const quote = (who) => D.quotes.find((q) => q.who.startsWith(who));
 
   room({ id: "open", n: "#", title: "REVIEW.md", crumb: "", dur: 6, wall: "#0f6b5f", flr: "#e8dcc6", ink: "#f6f1e7", em: "#ffb703", html: (r) => `
-    <div class="title a" style="--t:-2"><b>REVIEW</b><i>.md</i></div>
+    <div class="title a" style="--t:-2"><span class="kick">the <em>2026</em> version</span><b>REVIEW</b><i>.md</i></div>
     <img class="who c a pop" style="--t:-1.5" src="${M("wave")}" alt="">
     <div class="set">${MUG}</div>
     <div class="quote">

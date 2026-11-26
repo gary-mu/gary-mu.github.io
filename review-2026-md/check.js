@@ -18,6 +18,9 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   let s = await state();
   ok("starts on the opening room", s.vis.join() === "open" && s.y === 0, s.vis.join());
   ok("opening title is visible at rest", await page.evaluate(() => getComputedStyle(document.querySelector(".title")).opacity === "1"));
+  const kick = await page.evaluate(() => { const k = document.querySelector(".title .kick").getBoundingClientRect(), b = document.querySelector(".title b").getBoundingClientRect(), h = document.querySelector("#btn-index").getBoundingClientRect();
+    return { text: document.querySelector(".title .kick").textContent, above: k.bottom <= b.top + b.height * 0.12, onScreen: k.top > 0 && k.left >= 0 && k.right <= innerWidth, clearOfHud: k.right < h.left || k.top > h.bottom }; });
+  ok("opening shows 'the 2026 version' above the title, clear of the header", kick.text === "the 2026 version" && kick.above && kick.onScreen && kick.clearOfHud, JSON.stringify(kick));
 
   await page.mouse.move(700, 450);
   for (let i = 0; i < 6; i++) { await page.mouse.wheel({ deltaY: 400 }); await sleep(60); }
