@@ -93,6 +93,7 @@ const ok = (name, cond, extra = "") => { cond ? pass++ : fail++; console.log((co
   ok("trailer: says verdicts benchmarked per model", /verdicts benchmarked per model/.test(t));
   ok("trailer: has the model swap scene and OASIS in Claude", /led a model swap across teams/i.test(t) && /OASIS in Claude/.test(t) && /No significant impact on accuracy\./.test(t));
   ok("trailer: scene 3 says every one improved significantly from baseline, not 'missed first'", /Every one improved significantly from baseline\./.test(t) && /How\? I went back to the experts\./.test(t) && !/missed first/i.test(t));
+  ok("trailer: end card sends people to REVIEW.md (garymu.com/review-2026-md)", await p.evaluate(() => { const s = [...document.querySelectorAll(".scene")].pop(), a = s.querySelector(".lede a"); return /The full story: garymu\.com\/review-2026-md$/.test(s.querySelector(".lede").textContent.trim()) && !!a && a.getAttribute("href") === "../review-2026-md/"; }));
   ok("trailer: nine scenes that tile 0 to 31 s with no gap", await p.evaluate(() => { const s = [...document.querySelectorAll(".scene")].map((e) => [+e.dataset.in, +e.dataset.out]); return s.length === 9 && s[0][0] === 0 && s[8][1] === 31 && s.every((x, i) => !i || x[0] === s[i - 1][1]); }));
   ok("trailer: still exactly 30 s", (await p.evaluate(() => window.__duration)) === 30000);
   await p.close();
